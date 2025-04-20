@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include '../head.html' %}
+
+<body>
+    <main class="page-wrapper rbt-dashboard-page">
+        <div class="rbt-panel-wrapper">
+
+            {% include '../headers/header3.html' %}           
+            
+            <!-- Start Left panel -->
+            {% include '../leftPanel.html' %}
+            <!-- End Left panel -->
+
+            {% block content %}
+
+            {% endblock %} 
+
+        </div>
+    </main>
+
+    {% include '../progressbar.html' %}
+    <!-- All Scripts  -->
+
+    <!-- JS -->
+    {% include '../scripts.html' %}
+
+</body>
+
+</html>

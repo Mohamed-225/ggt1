@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include '../head.html' %}
+
+<body>
+    <main class="page-wrapper">
+        <!-- Start Header Top Area  -->
+        <div class="header-top-news bg-image1">
+            <div class="wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="inner">
+                                <div class="content">
+                                    <span class="rainbow-badge">Limited Time Offer</span>
+                                    <span class="news-text">Intro price. Get AiWave for Big Sale -95% off.</span>
+                                </div>
+                                <div class="right-button">
+                                    <a class="btn-read-more" target="_blank" href="https://themeforest.net/checkout/from_item/52155023?license=regular">
+                                        <span>Purchase Now <i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-close">
+                <button class="close-button bgsection-activation">
+                    <i class="fa-sharp fa-regular fa-x"></i>
+                </button>
+            </div>
+        </div>
+        <!-- End Header Top Area  -->
+      
+        {% include '../headers/header2.html' %}
+
+        <!-- Imroz Preloader -->
+        {% include '../preloader.html' %}
+
+        <!-- Start Breadcrumb Area  -->
+        <div class="main-content">
+            <!-- Start Breadcarumb area  -->
+            <div class="breadcrumb-area breadcarumb-style-1 pt--180 pb--100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb-inner text-center">
+                                <h3 class="title h3">{{ mainTitle }}</h3>
+                                <ul class="page-list">
+                                    <li class="rainbow-breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="rainbow-breadcrumb-item active">{{title}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Breadcarumb area  -->
+        </div>
+
+        {% block content %}
+
+        {% endblock %} 
+
+    </main>
+
+    <!-- Start Footer Area  -->
+    {% include '../footer.html' %}
+    <!-- End Footer Area  -->
+
+    {% include '../progressbar.html' %}
+
+    <!-- All Scripts  -->
+    {% include '../scripts.html' %}
+</body>
+
+</html>

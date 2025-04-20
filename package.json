@@ -1,0 +1,15 @@
+{
+  "name": "aiwave",
+  "version": "1.0.0",
+  "description": "Aiwave - AI SaaS Website + Dashboard Django UI Kit",
+  "author": "PixcelsThemes",
+  "scripts": {
+    "dev": "sass static/scss/style.scss static/css/style.css --watch ",
+    "build": "sass static/scss/style.scss static/css/style.css",
+    "start": "python manage.py runserver"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.75.0"
+  }
+}

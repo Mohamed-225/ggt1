@@ -1,11 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include 'partials/head.html' %}
+<head>
+    {% include 'partials/head.html' %}
+    <style>
+        .popup-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999; /* Ensure it's above other content */
+            justify-content: center;
+            align-items: center;
+            display: flex; /* Use flex for centering */
+            visibility: hidden; /* Use visibility for smoother transitions if needed */
+            opacity: 0; /* Start fully transparent */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Add transition */
+        }
+
+        .popup-overlay.visible { /* Class to show the popup */
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%; /* Responsive width */
+            max-width: 400px; /* Max width */
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: #333; /* Added text color for better readability */
+        }
+
+        /* === Updated CSS Selector for Higher Specificity === */
+        #popup .btn-close {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #007BFF; /* Blue background */
+            color: white;             /* White text */
+            border: none;             /* No border */
+            border-radius: 5px;      /* Rounded corners */
+            cursor: pointer;          /* Pointer cursor on hover */
+            transition: background-color 0.2s ease; /* Smooth hover effect */
+            font-size: 14px; /* Example: Explicitly set font size if needed */
+            line-height: 1.5; /* Example: Adjust line height if needed */
+            /* Add any other styles that might be overridden */
+        }
+
+        /* === Updated CSS Selector for Hover State === */
+        #popup .btn-close:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            color: white; /* Ensure text color remains white on hover */
+        }
+        /* === End of Updated CSS === */
+
+    </style>
+</head>
 
 <body>
     <main class="page-wrapper">
-        <!-- Start Sign up Area  -->
         <div class="signup-area">
             <div class="wrapper">
                 <div class="row">
@@ -21,7 +79,7 @@
                                             <span class="icon-left"><img src="/static/images/sign-up/google.png" alt="Google Icon"></span>Login with Google
                                         </a>
                                         <a class="btn-default btn-border" href="#">
-                                            <span class="icon-left"><img src="/static/images/sign-up/facebook.png" alt="Google Icon"></span>Login with Facebook
+                                            <span class="icon-left"><img src="/static/images/sign-up/facebook.png" alt="Facebook Icon"></span>Login with Facebook
                                         </a>
                                     </div>
                                     <div class="text-social-area">
@@ -46,46 +104,35 @@
                                             <div class="icon"><i class="fa-sharp fa-regular fa-lock"></i></div>
                                             <input type="password" placeholder="Confirm Password">
                                         </div>
-                                        <div class="forget-text"><a class="btn-read-more" href="#"><span>Forgot password</span></a></div>
-                                        <button type="submit" class="btn-default">Sign Up</button>
-                                    </form>
-                                </div>
-                                <div class="signup-box-footer">
-                                    <div class="bottom-text">
-                                        Do you have an account? <a class="btn-read-more ml--5" href="/pages/signin"><span>Sign In</span></a>
+                                        <div>
+                                            <div class="forget-text">
+                                                <a class="btn-read-more" href="#"><span>Forgot password</span></a>
+                                            </div>
+                                            <button type="button" class="btn-default" onclick="showPopup()">Sign Up</button>
+                                        </div>
+                                    </form> <div class="signup-box-footer">
+                                        <div class="bottom-text">
+                                            Do you have an account? <a class="btn-read-more ml--5" href="/pages/signin"><span>Sign In</span></a>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 right-wrapper">
+                                </div> </div> </div> </div> <div class="col-lg-6 right-wrapper">
                         <div class="client-feedback-area">
                             <div class="single-feedback">
                                 <div class="inner">
                                     <div class="meta-img-section">
                                         <a class="image" href="#">
-                                            <img src="/static/images/team/team-02sm.jpg" alt="">
+                                            <img src="/static/images/team/team-02sm.jpg" alt="Team Member">
                                         </a>
                                     </div>
                                     <div class="rating">
-                                        <a href="#rating">
-                                            <i class="fa-sharp fa-solid fa-star"></i>
-                                        </a>
-                                        <a href="#rating">
-                                            <i class="fa-sharp fa-solid fa-star"></i>
-                                        </a>
-                                        <a href="#rating">
-                                            <i class="fa-sharp fa-solid fa-star"></i>
-                                        </a>
-                                        <a href="#rating">
-                                            <i class="fa-sharp fa-solid fa-star"></i>
-                                        </a>
-                                        <a href="#rating">
-                                            <i class="fa-sharp fa-solid fa-star"></i>
-                                        </a>
+                                        <a href="#rating"><i class="fa-sharp fa-solid fa-star"></i></a>
+                                        <a href="#rating"><i class="fa-sharp fa-solid fa-star"></i></a>
+                                        <a href="#rating"><i class="fa-sharp fa-solid fa-star"></i></a>
+                                        <a href="#rating"><i class="fa-sharp fa-solid fa-star"></i></a>
+                                        <a href="#rating"><i class="fa-sharp fa-solid fa-star"></i></a>
                                     </div>
                                     <div class="content">
-                                        <p class="description">Pixcels-Themes is now a crucial component of our work! We made it simple to collaborate across departments by grouping our work</p>
+                                        <p class="description">kengster is now a crucial component of our work! We made it simple to collaborate across departments by grouping our work</p>
                                         <div class="bottom-content">
                                             <div class="meta-info-section">
                                                 <h4 class="title-text mb--0">Guy Hawkins</h4>
@@ -99,21 +146,45 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <a class="close-button" href="/">
+                    </div> </div> </div> <a class="close-button" href="/">
                 <i class="fa-sharp fa-regular fa-x"></i>
             </a>
         </div>
-        <!-- End Sign up Area  -->
-    </main>
+        </main>
 
-   
-    {% include 'partials/progressbar.html' %>
+    {% include 'partials/progressbar.html' %}
 
-    <!-- JS -->
-    {% include 'partials/scripts.html' %>
+    <div id="popup" class="popup-overlay">
+        <div class="popup-content">
+            <p>Thank you for signing up! We will send you the invitation link as soon as possible. We are working on increasing our capabilities to serve you better. Thank you for your patience.</p>
+            <button class="btn-close" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    {% include 'partials/scripts.html' %}
+
+    <script>
+        function showPopup() {
+            // Use class manipulation for smoother transitions
+            document.getElementById('popup').classList.add('visible');
+            // Optional: Prevent background scrolling when popup is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePopup() {
+            // Use class manipulation
+            document.getElementById('popup').classList.remove('visible');
+             // Optional: Restore background scrolling
+            document.body.style.overflow = '';
+        }
+
+        // Optional: Close popup if user clicks outside the content area
+        document.getElementById('popup').addEventListener('click', function(event) {
+            if (event.target === this) { // Check if the click is on the overlay itself
+                closePopup();
+            }
+        });
+    </script>
 </body>
 
 </html>
